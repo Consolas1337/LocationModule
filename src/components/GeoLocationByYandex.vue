@@ -1,25 +1,25 @@
 <template>
-  <div id="app">
-  <p v-on:click="getAddress()" style="cursor: pointer; text-decoration: underline;">
-    Определить местоположение
-  </p>
-  <p>Ваше местоположение: {{ answer }}</p>
-  <yandex-map :coords="coords" :zoom="zoom">
-
-  </yandex-map>
+  <div id="AppGetLocation">
+    <input type="text" placeholder="Введите запрос" v-model="answer" id="search">
+    <p v-on:click="getAddress()" style="cursor: pointer; text-decoration: underline;">
+      Определить местоположение
+    </p>
+    <yandex-map :coords="coords" :zoom="zoom" :controls='[]'></yandex-map>
   </div>
 </template>
-
 <script>
-import { yandexMap } from 'vue-yandex-maps';
+import { yandexMap, loadYmap } from 'vue-yandex-maps';
 
 export default {
+  mounted() {
+    loadYmap({});
+  },
   data() {
     return {
       answer: '',
       parent: '',
-      coords: [1, 1],
-      zoom: 13,
+      coords: [61, 69], // Default map position
+      zoom: 12,
     };
   },
   components: {
@@ -30,7 +30,6 @@ export default {
       let lat; let long;
       const parent = this; // TODO: fix link to 'this' (airbnb styleguide)
       const key = ''; // Yandex Map API key here
-      // eslint-disable-next-line no-unused-vars
 
       function succsess(position) {
         lat = position.coords.latitude; // широта
@@ -50,17 +49,22 @@ export default {
     },
   },
 };
+
 </script>
 
 <style>
-#app {
+#AppGetLocation {
+  position: fixed;
   width: 100%;
-  height: 1000px;
+  height: 100%;
 }
-
 .ymap-container {
-  height: 40%;
-    margin: 0 20% 0 20%;
-  width: 60%;
+  height: 60%;
+  margin: 0 25% 0 25%;
+  width: 50%;
+}
+input {
+  width: 14.6%;
+  margin: 5px 0 5px 0;
 }
 </style>
