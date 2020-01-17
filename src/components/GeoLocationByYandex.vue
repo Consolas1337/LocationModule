@@ -20,7 +20,7 @@ export default {
     getAddress() {
       let lat; let long;
       const parent = this; // TODO: fix link to 'this' (airbnb styleguide)
-      const key = 'dcd92292-7d57-4854-93c2-3267773325c2'; // Yandex Map API key here
+      const key = ''; // Yandex Map API key here
 
       function succsess(position) {
         lat = position.coords.latitude; // широта

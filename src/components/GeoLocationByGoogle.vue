@@ -19,7 +19,7 @@ export default {
   methods: {
     getAddress() {
       let lat; let long; const parent = this; // fix link to 'this' (airbnb)
-      const key = 'AIzaSyDoN6agdeFI-hpMtPq5Om0-sQP8qhvWguU'; // Google Map API key here
+      const key = ''; // Google Map API key here
       parent.answer = '...';
       function succsess(position) {
         lat = position.coords.latitude;
