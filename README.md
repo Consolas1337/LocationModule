@@ -1,5 +1,4 @@
-# test
-
+# LocationModule
 ## Project setup
 ```
 npm install
