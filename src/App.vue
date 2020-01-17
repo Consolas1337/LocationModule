@@ -1,9 +1,9 @@
 
 <template>
   <div id="app">
-    <GeoLocationByYandex/>
-    <br/>
     <ChooseCity/>
+    <br/>
+    <GeoLocationByYandex/>
   </div>
 </template>
 

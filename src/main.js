@@ -5,10 +5,11 @@ import App from './App.vue';
 import store from './store';
 
 const settings = {
-  apiKey: 'dcd92292-7d57-4854-93c2-3267773325c2', // Yandex map API key
+  apiKey: '', // Yandex map API key
   lang: 'ru_RU',
   coordorder: 'latlong',
   version: '2.1',
+  mode: 'debug', // !!DEBUG MODE!!! in PRODUCTION REMOVE this line or change to 'release'
 };
 
 Vue.config.productionTip = false;
