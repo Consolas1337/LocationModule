@@ -7,7 +7,7 @@ import store from './store';
 const settings = {
   apiKey: '', // Yandex map API key
   lang: 'ru_RU',
-  coordorder: 'latlong',
+  coordorder: 'longlat',
   version: '2.1',
   mode: 'debug', // !!DEBUG MODE!!! in PRODUCTION REMOVE THIS LINE or change to 'release'
 };

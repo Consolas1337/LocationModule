@@ -20,8 +20,9 @@ export default {
     return {
       answer: '',
       parent: null,
-      coords: [61, 69], // Default map position
+      coords: [69, 61], // Default map position
       zoom: 12,
+      key: '', // Yandex Map API key here
     };
   },
   components: {
@@ -32,7 +33,12 @@ export default {
   },
   methods: {
     locate() {
-
+      this.$http.get(`https://geocode-maps.yandex.ru/1.x?geocode=${this.answer}&apikey=${this.key}&lang=ru_RU&kind=locality&format=json&results=1`).then((response) => {
+        // eslint-disable-next-line max-len
+        const latLongStr = response.body.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos;
+        this.coords = latLongStr.split(' ');
+        [this.coords[0], this.coords[1]] = [this.coords[1], this.coords[0]];
+      });
     },
     initMapHandler() {
       window.ymaps.ready(this.init);
@@ -47,13 +53,12 @@ export default {
     getAddress() {
       let lat; let long;
       const parent = this; // TODO: fix link to 'this' (airbnb styleguide)
-      const key = ''; // Yandex Map API key here
 
       function succsess(position) {
         lat = position.coords.latitude; // широта
         long = position.coords.longitude; // долгота
         parent.coords = [lat, long];
-        parent.$http.get(`https://geocode-maps.yandex.ru/1.x?geocode=${long},${lat}&apikey=${key}&lang=ru_RU&kind=locality&format=json&results=1`).then((response) => {
+        parent.$http.get(`https://geocode-maps.yandex.ru/1.x?geocode=${long},${lat}&apikey=${parent.key}&lang=ru_RU&kind=locality&format=json&results=1`).then((response) => {
           // eslint-disable-next-line max-len
           parent.answer = response.body.response.GeoObjectCollection.featureMember[0].GeoObject.name; // Parsing JSON DOM-tree
         });
