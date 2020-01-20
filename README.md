@@ -1,23 +1,13 @@
 # LocationModule
+
 ## Project setup
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
+## Project run
 ```
 npm run serve
 ```
+## Перед запуском вставить api key Yandex карт в main.js[8 строка] и GeoLocationByYandex.vue[50 строка]
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
