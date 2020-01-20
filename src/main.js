@@ -9,7 +9,7 @@ const settings = {
   lang: 'ru_RU',
   coordorder: 'latlong',
   version: '2.1',
-  mode: 'debug', // !!DEBUG MODE!!! in PRODUCTION REMOVE this line or change to 'release'
+  mode: 'debug', // !!DEBUG MODE!!! in PRODUCTION REMOVE THIS LINE or change to 'release'
 };
 
 Vue.config.productionTip = false;

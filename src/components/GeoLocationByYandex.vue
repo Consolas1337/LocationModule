@@ -1,23 +1,25 @@
 <template>
   <div id="AppGetLocation">
-    <input type="text" placeholder="Введите запрос" v-model="answer" id="search">
+    <input type="text" placeholder="Ваш город" v-model="answer" id="search" v-on:change="locate()">
     <p v-on:click="getAddress()" style="cursor: pointer; text-decoration: underline;">
       Определить местоположение
     </p>
-    <yandex-map :coords="coords" :zoom="zoom" :controls='[]'></yandex-map>
+    <yandex-map
+    :coords="coords"
+    :zoom="zoom"
+    :controls='[]'
+    @map-was-initialized="initMapHandler"
+    />
   </div>
 </template>
 <script>
 import { yandexMap, loadYmap } from 'vue-yandex-maps';
 
 export default {
-  mounted() {
-    loadYmap({});
-  },
   data() {
     return {
       answer: '',
-      parent: '',
+      parent: null,
       coords: [61, 69], // Default map position
       zoom: 12,
     };
@@ -25,7 +27,19 @@ export default {
   components: {
     yandexMap,
   },
+  created() {
+    loadYmap({ mode: 'debug' });
+  },
   methods: {
+    locate() {
+    },
+    initMapHandler() {
+      window.ymaps.ready(this.init);
+    },
+    init() {
+      // eslint-disable-next-line no-unused-vars
+      const suggestElement = new window.ymaps.SuggestView('search');
+    },
     getAddress() {
       let lat; let long;
       const parent = this; // TODO: fix link to 'this' (airbnb styleguide)
@@ -64,7 +78,7 @@ export default {
   width: 50%;
 }
 input {
-  width: 14.6%;
+  width: 20%;
   margin: 5px 0 5px 0;
 }
 </style>
