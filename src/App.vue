@@ -1,19 +1,21 @@
 
 <template>
   <div id="app">
+    <ChooseCity/>
+    <hr/>
     <br/>
     <GeoLocationByYandex/>
   </div>
 </template>
 
 <script>
-// import ChooseCity from './components/ChooseCity.vue';
+import ChooseCity from './components/ChooseCity.vue';
 import GeoLocationByYandex from './components/GeoLocationByYandex.vue';
 
 export default {
   name: 'app',
   components: {
-    // ChooseCity,
+    ChooseCity,
     GeoLocationByYandex,
   },
 };

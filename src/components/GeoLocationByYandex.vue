@@ -32,13 +32,17 @@ export default {
   },
   methods: {
     locate() {
+
     },
     initMapHandler() {
       window.ymaps.ready(this.init);
     },
     init() {
       // eslint-disable-next-line no-unused-vars
-      const suggestElement = new window.ymaps.SuggestView('search');
+      const suggestElement = new window.ymaps.SuggestView('search', {
+        boundedBy: [[26, 74], [-170, 40]],
+        results: 2,
+      });
     },
     getAddress() {
       let lat; let long;
@@ -73,7 +77,7 @@ export default {
   height: 100%;
 }
 .ymap-container {
-  height: 60%;
+  height: 45%;
   margin: 0 25% 0 25%;
   width: 50%;
 }

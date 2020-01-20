@@ -24,7 +24,7 @@
 import store from '../store';
 
 export default {
-  name: 'app',
+  name: 'ChooseCity',
   data() {
     return {
       store,
